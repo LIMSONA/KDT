@@ -145,3 +145,16 @@ select * from salgrade;
 select e.empno, e.ename, e.sal, s.grade 
 from emp e, salgrade s
 where e.sal between s.losal and s.hisal; 
+
+select * from emp;
+
+ -- 셀프조인
+# emp 테이블에서 사원번호는 있는 매니저번호가 없는 경우도 있다
+# 그래서 매니저가 있는 사원을 알고 싶을때
+# 셀프조인을 통해서 이해해야한다.
+
+select e.empno 사원번호, e.ename 사원이름,
+m.empno 매니저사번, m.ename 매니저이름
+from emp e, emp m
+where e.mgr = m.empno;
+
