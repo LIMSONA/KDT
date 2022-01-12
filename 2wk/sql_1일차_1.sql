@@ -47,6 +47,8 @@ select ename,empno,job from emp;
 # 사원명, 사원번호, 직업을 emp테이블에서 부서명이 10번인 것 조회
 select ename,empno,job from emp where DEPTNO=10;
 
+
+-- pets 테이블에서 특정조건 쓰기 --
 select * from pets where name = "doongi";
 select * from pets where name is null;
 select * from pets where death is null;
