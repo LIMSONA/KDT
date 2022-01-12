@@ -72,7 +72,7 @@ select count(*), deptno from emp group by deptno; -- > 이거는 가능함
 
 -- 실행순서 --
 -- FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY 
-# 조건1 - 부서별 평균 급여. 급여 1000원 이하 제외
+# 조건1 - 부서별 평균 급여 급여 1000원 이하 제외
 # 조건2 - 부서별 평균 급여 2500원 이하 부서 제외
 
 select deptno, avg(sal) from emp
@@ -81,4 +81,67 @@ group by DEPTNO
 having avg(sal) > 2500
 order by 2 desc;
 
-  
+-- 부서별 평균급여
+-- 부서별 전체 사원수와 커미션을 받는 사원 수 구하기alter
+select * from emp;
+select deptno, count(empno), count(comm) ,avg(sal) from emp
+group by deptno;
+
+select * from emp;
+select * from dept;
+
+desc dept;
+
+-- 조인 --
+select empno,ename,dname from emp,dept where emp.DEPTNO = dept.DEPTNO;
+
+
+select * from emp;
+-- 7934번 null로 만들기
+update emp set deptno=null where empno=7934;
+select * from emp;
+
+
+select e.empno, e.ename, d.dname, from emp e,dept d 
+where e.DEPTNO = d.DEPTNO;
+
+#조인에 조건 붙이기
+select e.empno, e.ename, d.dname, d.deptno from emp e,dept d 
+where e.DEPTNO = d.DEPTNO and sal<3000 ;
+
+#위와 동일한 natural join
+select e.empno, e.ename, d.deptno, d.dname 
+from emp e natural join dept d 
+where e.DEPTNO = d.DEPTNO and sal<3000 ;
+
+#join ~ on 이용
+select e.empno, e.ename, d.deptno, d.dname 
+from emp e join dept d 
+on e.DEPTNO = d.DEPTNO and sal<3000 ;
+
+desc dept;
+insert into dept values(50,"test","Seoul");
+select * from dept;
+
+
+# right (outer) join
+select e.empno, e.ename, d.deptno, d.dname 
+from emp e right outer join dept d 
+on e.DEPTNO = d.DEPTNO;
+
+# left (outer) join
+select e.empno, e.ename, d.deptno, d.dname 
+from emp e left outer join dept d 
+on e.DEPTNO = d.DEPTNO;
+
+# full (outer) join
+select e.empno, e.ename, d.deptno, d.dname 
+from emp e full outer join dept d 
+on e.DEPTNO = d.DEPTNO;
+
+desc salgrade;
+select * from salgrade;
+
+select e.empno, e.ename, e.sal, s.grade 
+from emp e, salgrade s
+where e.sal between s.losal and s.hisal; 
