@@ -1,0 +1,17 @@
+import boto3
+
+
+def upload_file_to_bucket(file_name):
+    #변수들 설정
+    BUCKET_NAME = '내가 설정한 버킷이름'
+    S3_KEY = 'images/' + file_name
+    s3 = boto3.client('s3')
+
+    #버킷에 업로드된 파일 가져오기
+    s3.upload_file(file_name, BUCKET_NAME, S3_KEY)
+
+#업로드할 파일 이름 써주기
+file_name='1.jpg'
+
+#지정한 함수 실행하기
+upload_file_to_bucket(file_name)
