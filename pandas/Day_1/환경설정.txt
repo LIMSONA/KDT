@@ -1,0 +1,20 @@
+1. 아나콘다 설치(anaconda.com)   
+
+2. 주피터 노트북 시작폴더 변경
+   관리자권한으로 Anaconda PowerShell Prompt실행
+   (1) jupyter notebook --generate-config
+   (2) (1)번 결과로 나온 "jupyter_notebook_config.py" 파일을 열어
+       #c.NotebookApp.notebook_dir=''
+       #지우고, ''사이에 원하는 경로 삽입
+   (3) 시작메뉴의 'Jupyter Notbook' 우클릭 '자세히'-'파일위치열기'선택
+   (4) 'Jupyter Notebook (anaconda3)' 우클릭->속성클릭
+   (5) '바로가기' 탭의 '대상'의 '%USERPROFILE%',
+       '시작위치'의 '%HOEMPATH%'를 삭제한다.
+
+4. 주피터 노트북 익스텐션 설치
+   Anaconda Prompt실행
+   (1) pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install
+
+5. 텐서플로, 케라스 설치
+   (1) conda install tensorflow
+   (2) conda install keras
